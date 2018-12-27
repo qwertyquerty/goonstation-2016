@@ -19,6 +19,8 @@
 	var/image/fluid_image
 	rc_flags = RC_SCALE | RC_VISIBLE | RC_SPECTRO
 
+	hold_in_mouthable = 1 // ruh roh
+
 	New()
 		..()
 		fluid_image = image('icons/obj/syringe.dmi')

@@ -17,6 +17,9 @@
 	burn_possible = 1
 	health = 10
 
+
+	hold_in_mouthable = 1
+
 	var/list/form_startpoints
 	var/list/form_endpoints
 

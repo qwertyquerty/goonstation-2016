@@ -208,6 +208,8 @@
 	w_class = 1
 	var/forensic_ID = null
 
+	hold_in_mouthable = 1 // BITING THE BULLET (case)
+
 	small
 		icon_state = "small"
 		desc = "Seems to be a small pistol cartridge."

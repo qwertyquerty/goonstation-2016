@@ -30,6 +30,8 @@
 	rand_pos = 1
 	var/in_use = 0
 
+	hold_in_mouthable = 1 // you could probably hold a pen in your mouth, right?
+
 	proc/write_on_turf(var/turf/T as turf, var/mob/user as mob)
 		if (!T || !user || src.in_use || get_dist(T, user) > 1)
 			return

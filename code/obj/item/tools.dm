@@ -99,6 +99,8 @@ MATERIAL COLLECTOR
 	module_research = list("tools" = 4, "metals" = 2)
 	rand_pos = 1
 
+	hold_in_mouthable = 1
+
 /obj/item/wrench/monkey
 	icon_state = "monkey_wrench"
 	name = "monkey wrench"
@@ -128,6 +130,8 @@ MATERIAL COLLECTOR
 	stamina_crit_chance = 30
 	module_research = list("tools" = 4, "metals" = 1)
 	rand_pos = 1
+
+	hold_in_mouthable = 1
 
 /obj/item/screwdriver/suicide(var/mob/user as mob)
 	user.visible_message("<span style=\"color:red\"><b>[user] jams the screwdriver into \his eye over and over and over.</b></span>")

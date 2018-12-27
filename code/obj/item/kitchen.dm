@@ -34,6 +34,8 @@ MISC KITCHENWARE
 	stamina_cost = 10
 	stamina_crit_chance = 15
 
+	hold_in_mouthable = 1
+
 	New()
 		if (prob(60))
 			src.pixel_y = rand(0, 4)

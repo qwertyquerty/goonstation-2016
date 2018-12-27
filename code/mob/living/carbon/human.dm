@@ -5084,7 +5084,7 @@
 		rendered = "<span class='name'>"
 	else
 		rendered = "<span class='name' data-ctx='\ref[src.mind]'>"
-	if (src.wear_mask && src.wear_mask.vchange)//(istype(src.wear_mask, /obj/item/clothing/mask/gas/voice))
+	if (src.wear_mask && !src.wear_mask.hold_in_mouthable && src.wear_mask.vchange)//(istype(src.wear_mask, /obj/item/clothing/mask/gas/voice))
 		if (src.wear_id)
 			rendered += "[src.wear_id:registered]</span>"
 		else
@@ -5584,6 +5584,10 @@
 					return 0
 				else
 					return 1
+
+			else if (I.hold_in_mouthable) // thanks 'dweller (for items you can hold in your mouth)
+				return 1
+
 		if (slot_ears)
 			if (istype(I, /obj/item/clothing/ears) || istype(I,/obj/item/device/radio/headset))
 				return 1

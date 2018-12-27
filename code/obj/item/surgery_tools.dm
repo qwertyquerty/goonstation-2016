@@ -34,6 +34,9 @@ BODY BAG
 	stamina_damage = 5
 	stamina_cost = 5
 	stamina_crit_chance = 35
+
+	hold_in_mouthable = 1 // seriously? disgusting.
+
 	var/mob/Poisoner = null
 	module_research = list("tools" = 3, "medicine" = 3, "weapons" = 0.25)
 
@@ -152,6 +155,8 @@ BODY BAG
 	stamina_crit_chance = 35
 	var/mob/Poisoner = null
 	module_research = list("tools" = 3, "medicine" = 3, "weapons" = 0.25)
+
+	hold_in_mouthable = 1
 
 	New()
 		..()
@@ -397,6 +402,7 @@ BODY BAG
 	stamina_cost = 1
 	stamina_crit_chance = 0
 	var/in_use = 0
+
 
 	attack(mob/living/carbon/M as mob, mob/living/carbon/user as mob)
 		if (!suture_surgery(M,user))

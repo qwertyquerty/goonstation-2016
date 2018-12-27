@@ -48,6 +48,9 @@
 	icon_state = "glowstick-off"
 	name = "emergency glowstick"
 	desc = "For emergency use only. Not for use in illegal lightswitch raves."
+
+	hold_in_mouthable = 1 // Don't bite too hard!
+
 	var/on = 0
 
 	var/datum/light/light

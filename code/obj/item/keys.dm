@@ -10,6 +10,8 @@
 	w_class = 1.0
 	burn_possible = 0 // too important to burn!
 
+	hold_in_mouthable = 1 // sol in style
+
 /obj/item/device/key/cheget
 	name = "old fancy key"
 	desc = "It unlocks or locks slightly newer doors."

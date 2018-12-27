@@ -510,6 +510,9 @@
 	if (src.stuttering)
 		message = stutter(message)
 
+	if (src.wear_mask && src.wear_mask.hold_in_mouthable)
+		message = iteminmouthify(message)
+
 	// :downs:
 	if (src.get_brain_damage() >= 60)
 		message = replacetext(message, " am ", " ")
@@ -1040,6 +1043,84 @@
 	P.string = new_string
 	P.chars_used = used
 	return P
+
+
+
+/proc/iteminmouthify(n)
+	var/allowed_punctuation = list("!", "?", ".", ",", " ")
+	var/lower_case_letters = list("a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z")
+	var/upper_case_letters = list("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z")
+	var/digits = list("0","1","2","3","4","5","6","7","8","9")
+
+	var/te = html_decode(n)
+	var/t = ""
+	var/char_new = ""
+	n = length(n)
+	var/p = null
+	p = 1
+	while(p <= n)
+		var/c_letter = copytext(te, p, p + 1)
+		var/n_letter = copytext(te, p + 1, p + 2)
+
+		if (c_letter in allowed_punctuation)
+			char_new = c_letter
+			t += char_new
+			p++
+			continue
+
+		switch(c_letter)
+			if ("y")
+				char_new = "e"
+			if ("Y")
+				char_new = "E"
+			if ("C")
+				char_new = "CH"
+			if ("c")
+				char_new = "ch"
+			if ("k")
+				char_new = "kh"
+			if ("K")
+				char_new = "KH"
+			if ("s")
+				char_new = "sh"
+			if ("S")
+				char_new = "SH"
+			if ("z")
+				char_new = pick("zsh", "sh")
+			if ("Z")
+				char_new = pick("ZSH", "SH")
+			if ("t", "v")
+				char_new = "f"
+			if ("T", "V")
+				char_new = "F"
+			if ("p")
+				char_new = pick("pfh", "ph")
+			if ("P")
+				char_new = pick("PFH", "PH")
+			if ("h")
+				char_new = pick("Hh", "hh")
+			if ("H")
+				char_new = "HH"
+			if ("l")
+				char_new = pick("yl", "y")
+			if ("L")
+				char_new = pick("YL", "Y")
+			else
+				if (c_letter in lower_case_letters)
+					char_new = pick("m", "m", "m", "mm", "m", "m", "m", "mm", "f")
+				else if (c_letter in upper_case_letters)
+					char_new = pick("M", "M", "M", "MM", "M", "M", "M", "Mm", "F")
+				else if (c_letter in digits)
+					char_new = pick("mf", "Mf", "mmf", "mf")
+
+		if (n_letter in allowed_punctuation)
+			char_new += pick("f", "ff", "ff", "f")
+
+		t += char_new
+		p++
+
+	return copytext(sanitize(t),1,MAX_MESSAGE_LEN)
+
 
 /mob/living/Move(var/turf/NewLoc, direct)
 	var/oldloc = loc
