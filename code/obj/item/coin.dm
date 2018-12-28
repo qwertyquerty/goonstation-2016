@@ -10,7 +10,8 @@
 	module_research = list("vice" = 3, "efficiency" = 1)
 	module_research_type = /obj/item/coin
 
-	hold_in_mouthable = 1
+	flags = FPRINT | TABLEPASS | MUFFLES_SPEECH_ON_FACE
+	equippable = EQUIP_SLOT_MASK
 
 /obj/item/coin/attack_self(mob/user as mob)
 	boutput(user, "<span style=\"color:blue\">You flip the coin</span>")

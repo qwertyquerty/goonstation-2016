@@ -29,12 +29,13 @@ MISC KITCHENWARE
 	throwforce = 5.0
 	throw_speed = 3
 	throw_range = 5
-	flags = FPRINT | TABLEPASS | CONDUCT
+	flags = FPRINT | TABLEPASS | CONDUCT | MUFFLES_SPEECH_ON_FACE
+	equippable = FPRINT | TABLEPASS | EQUIP_SLOT_MASK
+
 	stamina_damage = 5
 	stamina_cost = 10
 	stamina_crit_chance = 15
 
-	hold_in_mouthable = 1
 
 	New()
 		if (prob(60))

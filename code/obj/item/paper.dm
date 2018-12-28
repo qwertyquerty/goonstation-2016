@@ -16,9 +16,9 @@
 	burn_output = 900
 	burn_possible = 1
 	health = 10
+	flags = MUFFLES_SPEECH_ON_FACE
+	equippable = EQUIP_SLOT_MASK
 
-
-	hold_in_mouthable = 1
 
 	var/list/form_startpoints
 	var/list/form_endpoints

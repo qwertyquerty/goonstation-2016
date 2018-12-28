@@ -19,7 +19,8 @@
 	var/image/fluid_image
 	rc_flags = RC_SCALE | RC_VISIBLE | RC_SPECTRO
 
-	hold_in_mouthable = 1 // ruh roh
+	equippable = EQUIP_SLOT_MASK
+	flags = FPRINT | TABLEPASS | MUFFLES_SPEECH_ON_FACE // ruh roh
 
 	New()
 		..()

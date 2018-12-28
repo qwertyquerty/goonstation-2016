@@ -87,7 +87,7 @@ MATERIAL COLLECTOR
 	icon = 'icons/obj/items.dmi'
 	inhand_image_icon = 'icons/mob/inhand/hand_tools.dmi'
 	icon_state = "wrench"
-	flags = FPRINT | TABLEPASS | CONDUCT
+	flags = FPRINT | TABLEPASS | CONDUCT | MUFFLES_SPEECH_ON_FACE
 	force = 5.0
 	throwforce = 7.0
 	w_class = 2.0
@@ -99,7 +99,9 @@ MATERIAL COLLECTOR
 	module_research = list("tools" = 4, "metals" = 2)
 	rand_pos = 1
 
-	hold_in_mouthable = 1
+	equippable = EQUIP_SLOT_MASK
+
+
 
 /obj/item/wrench/monkey
 	icon_state = "monkey_wrench"
@@ -116,7 +118,7 @@ MATERIAL COLLECTOR
 	icon = 'icons/obj/items.dmi'
 	inhand_image_icon = 'icons/mob/inhand/hand_tools.dmi'
 	icon_state = "screwdriver"
-	flags = FPRINT | TABLEPASS | CONDUCT
+	flags = FPRINT | TABLEPASS | CONDUCT | MUFFLES_SPEECH_ON_FACE
 	force = 5.0
 	w_class = 1.0
 	hit_type = DAMAGE_STAB
@@ -131,7 +133,8 @@ MATERIAL COLLECTOR
 	module_research = list("tools" = 4, "metals" = 1)
 	rand_pos = 1
 
-	hold_in_mouthable = 1
+	equippable = EQUIP_SLOT_MASK // robust hacking
+
 
 /obj/item/screwdriver/suicide(var/mob/user as mob)
 	user.visible_message("<span style=\"color:red\"><b>[user] jams the screwdriver into \his eye over and over and over.</b></span>")

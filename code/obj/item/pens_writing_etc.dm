@@ -15,7 +15,7 @@
 	icon = 'icons/obj/writing.dmi'
 	inhand_image_icon = 'icons/mob/inhand/hand_tools.dmi'
 	icon_state = "pen"
-	flags = FPRINT | ONBELT | TABLEPASS
+	flags = FPRINT | ONBELT | TABLEPASS | MUFFLES_SPEECH_ON_FACE
 	throwforce = 0
 	w_class = 1.0
 	throw_speed = 7
@@ -30,7 +30,8 @@
 	rand_pos = 1
 	var/in_use = 0
 
-	hold_in_mouthable = 1 // you could probably hold a pen in your mouth, right?
+	equippable = EQUIP_SLOT_MASK
+
 
 	proc/write_on_turf(var/turf/T as turf, var/mob/user as mob)
 		if (!T || !user || src.in_use || get_dist(T, user) > 1)

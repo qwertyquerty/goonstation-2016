@@ -10,7 +10,8 @@
 	w_class = 1.0
 	burn_possible = 0 // too important to burn!
 
-	hold_in_mouthable = 1 // sol in style
+	equippable = EQUIP_SLOT_MASK // sol in style
+	flags = FPRINT | TABLEPASS | MUFFLES_SPEECH_ON_FACE
 
 /obj/item/device/key/cheget
 	name = "old fancy key"

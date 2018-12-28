@@ -163,7 +163,8 @@
 #define FPRINT 256			// takes a fingerprint
 #define ON_BORDER 512		// item has priority to check when entering or leaving
 // 1024 - unused
-// 2048	- unused
+#define MUFFLES_SPEECH_ON_FACE 2048
+
 #define OPENCONTAINER	4096	// is an open container for chemistry purposes
 #define ISADVENTURE 8192        // is an atom spawned in an adventure area
 #define NOSPLASH 16384  		//No beaker etc. splashing. For Chem machines etc.
@@ -505,3 +506,18 @@ var/const
 #define DELETE_STOP 0
 #define DELETE_RUNNING 1
 #define DELETE_CHECK 2
+
+// equippable flags for equippable var, say if thing can be equipabble to each slot. TODO: start transfering to this system
+#define EQUIP_SLOT_BACK 1
+#define EQUIP_SLOT_MASK 2
+#define EQUIP_SLOT_HAND 4 // both hands
+#define EQUIP_SLOT_BELT 8
+#define EQUIP_SLOT_ID 16
+#define EQUIP_SLOT_EARS 32
+#define EQUIP_SLOT_GLASSES 64
+#define EQUIP_SLOT_GLOVES 128
+#define EQUIP_SLOT_HEAD 256
+#define EQUIP_SLOT_SHOES 512
+#define EQUIP_SLOT_SUIT 1024
+#define EQUIP_SLOT_UNIFORM 2048
+#define EQUIP_SLOT_STORE 4096 // both pockets

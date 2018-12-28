@@ -49,13 +49,14 @@
 	var/module_research_no_diminish = 0
 
 	var/edible = 0 // can you eat the thing?
-	var/hold_in_mouthable = 0 // can you hold in mouthable the thing?
 
 	var/duration_put    = -1 //If set to something other than -1 these will control
 	var/duration_remove = -1 //how long it takes to remove or put the item onto a person. 1/10ths of a second.
 
 	var/rand_pos = 0
 	var/useInnerItem = 0 //Should this item use a contained item (in contents) to attack with instead?
+
+	var/equippable = null // Flags for equiping items see _setup.dm
 
 	onMaterialChanged()
 		..()

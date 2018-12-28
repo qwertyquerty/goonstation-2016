@@ -21,7 +21,7 @@ BODY BAG
 	icon_state = "scalpel1"
 	inhand_image_icon = 'icons/mob/inhand/hand_medical.dmi'
 	item_state = "scalpel"
-	flags = FPRINT | TABLEPASS | CONDUCT
+	flags = FPRINT | TABLEPASS | CONDUCT | MUFFLES_SPEECH_ON_FACE
 	hit_type = DAMAGE_CUT
 	hitsound = 'sound/weapons/slashcut.ogg'
 	force = 3.0
@@ -35,7 +35,7 @@ BODY BAG
 	stamina_cost = 5
 	stamina_crit_chance = 35
 
-	hold_in_mouthable = 1 // seriously? disgusting.
+	equippable = EQUIP_SLOT_MASK // seriously? disgusting.
 
 	var/mob/Poisoner = null
 	module_research = list("tools" = 3, "medicine" = 3, "weapons" = 0.25)
@@ -140,7 +140,7 @@ BODY BAG
 	icon_state = "spoon"
 	inhand_image_icon = 'icons/mob/inhand/hand_medical.dmi'
 	item_state = "scalpel"
-	flags = FPRINT | TABLEPASS | CONDUCT
+	flags = FPRINT | TABLEPASS | CONDUCT | MUFFLES_SPEECH_ON_FACE
 	hit_type = DAMAGE_STAB
 	hitsound = 'sound/effects/bloody_stab.ogg'
 	force = 3.0
@@ -156,7 +156,8 @@ BODY BAG
 	var/mob/Poisoner = null
 	module_research = list("tools" = 3, "medicine" = 3, "weapons" = 0.25)
 
-	hold_in_mouthable = 1
+	equippable = EQUIP_SLOT_MASK
+
 
 	New()
 		..()

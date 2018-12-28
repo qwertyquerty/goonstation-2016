@@ -19,7 +19,9 @@
 	module_research_type = /obj/item/dice
 	rand_pos = 1
 
-	hold_in_mouthable = 1
+	equippable = EQUIP_SLOT_MASK
+	flags = FPRINT | TABLEPASS | MUFFLES_SPEECH_ON_FACE
+
 
 	get_desc()
 		if (src.last_roll && !src.dicePals.len)

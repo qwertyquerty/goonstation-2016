@@ -510,7 +510,7 @@
 	if (src.stuttering)
 		message = stutter(message)
 
-	if (src.wear_mask && src.wear_mask.hold_in_mouthable)
+	if (src.wear_mask && src.wear_mask.flags & MUFFLES_SPEECH_ON_FACE)
 		message = iteminmouthify(message)
 
 	// :downs:
@@ -1056,8 +1056,7 @@
 	var/t = ""
 	var/char_new = ""
 	n = length(n)
-	var/p = null
-	p = 1
+	var/p = 1
 	while(p <= n)
 		var/c_letter = copytext(te, p, p + 1)
 		var/n_letter = copytext(te, p + 1, p + 2)

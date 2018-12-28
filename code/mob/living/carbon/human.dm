@@ -5084,7 +5084,7 @@
 		rendered = "<span class='name'>"
 	else
 		rendered = "<span class='name' data-ctx='\ref[src.mind]'>"
-	if (src.wear_mask && !src.wear_mask.hold_in_mouthable && src.wear_mask.vchange)//(istype(src.wear_mask, /obj/item/clothing/mask/gas/voice))
+	if (src.wear_mask && !src.wear_mask.flags & MUFFLES_SPEECH_ON_FACE && src.wear_mask.vchange)//(istype(src.wear_mask, /obj/item/clothing/mask/gas/voice))
 		if (src.wear_id)
 			rendered += "[src.wear_id:registered]</span>"
 		else
@@ -5561,20 +5561,23 @@
 /mob/living/carbon/human/proc/can_equip(obj/item/I, slot)
 	switch (slot)
 		if (slot_l_store, slot_r_store)
-			if (I.w_class <= 2 && src.w_uniform)
+			if (I.w_class <= 2 && src.w_uniform || I.equippable & EQUIP_SLOT_STORE)
 				return 1
 		if (slot_l_hand, slot_r_hand)
 			return 1
 		if (slot_belt)
-			if ((I.flags & ONBELT) && src.w_uniform)
+			if ((I.flags & ONBELT) && src.w_uniform || I.equippable & EQUIP_SLOT_BELT)
 				return 1
 		if (slot_wear_id)
 			if (istype(I, /obj/item/card/id) && src.w_uniform)
 				return 1
 			if (istype(I, /obj/item/device/pda2) && I:ID_card && src.w_uniform)
 				return 1
+			if (I.equippable & EQUIP_SLOT_ID)
+				return 1
+
 		if (slot_back)
-			if (I.flags & ONBACK)
+			if (I.flags & ONBACK || I.equippable & EQUIP_SLOT_BACK)
 				return 1
 		if (slot_wear_mask) // It's not pretty, but the mutantrace check will do for the time being (Convair880).
 			if (istype(I, /obj/item/clothing/mask))
@@ -5585,17 +5588,17 @@
 				else
 					return 1
 
-			else if (I.hold_in_mouthable) // thanks 'dweller (for items you can hold in your mouth)
+			if (I.equippable & EQUIP_SLOT_MASK)
 				return 1
 
 		if (slot_ears)
-			if (istype(I, /obj/item/clothing/ears) || istype(I,/obj/item/device/radio/headset))
+			if (istype(I, /obj/item/clothing/ears) || istype(I,/obj/item/device/radio/headset) || I.equippable & EQUIP_SLOT_EARS)
 				return 1
 		if (slot_glasses)
-			if (istype(I, /obj/item/clothing/glasses))
+			if (istype(I, /obj/item/clothing/glasses) || I.equippable & EQUIP_SLOT_GLASSES)
 				return 1
 		if (slot_gloves)
-			if (istype(I, /obj/item/clothing/gloves))
+			if (istype(I, /obj/item/clothing/gloves) || I.equippable & EQUIP_SLOT_GLOVES)
 				return 1
 		if (slot_head)
 			if (istype(I, /obj/item/clothing/head))
@@ -5605,6 +5608,10 @@
 					return 0
 				else
 					return 1
+
+			if (I.equippable & EQUIP_SLOT_HEAD)
+				return 1
+
 		if (slot_shoes)
 			if (istype(I, /obj/item/clothing/shoes))
 				var/obj/item/clothing/SH = I
@@ -5621,6 +5628,9 @@
 					return 0
 				else
 					return 1
+			if (I.equippable & EQUIP_SLOT_SUIT)
+				return 1
+
 		if (slot_w_uniform)
 			if (istype(I, /obj/item/clothing/under))
 				var/obj/item/clothing/U = I
@@ -5629,6 +5639,9 @@
 					return 0
 				else
 					return 1
+			if (I.equippable & EQUIP_SLOT_UNIFORM)
+				return 1
+
 		if (slot_in_backpack) // this slot is stupid
 			if (src.back && istype(src.back, /obj/item/storage))
 				var/obj/item/storage/S = src.back

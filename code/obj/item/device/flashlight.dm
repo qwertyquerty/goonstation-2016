@@ -49,7 +49,8 @@
 	name = "emergency glowstick"
 	desc = "For emergency use only. Not for use in illegal lightswitch raves."
 
-	hold_in_mouthable = 1 // Don't bite too hard!
+	equippable = EQUIP_SLOT_MASK // don't bite too hard!!
+	flags = FPRINT | TABLEPASS | MUFFLES_SPEECH_ON_FACE
 
 	var/on = 0
 

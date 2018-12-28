@@ -262,7 +262,7 @@ Frequency:
 	// Receiving mobs
 	for (var/mob/R in receive)
 		if (R.say_understands(M, lang_id))
-			if (!ishuman(M) || (ishuman(M) && M.wear_mask && !M.wear_mask.hold_in_mouthable && M.wear_mask.vchange))//istype(M.wear_mask, /obj/item/clothing/mask/gas/voice))
+			if (!ishuman(M) || (ishuman(M) && M.wear_mask && !M.wear_mask.flags & MUFFLES_SPEECH_ON_FACE && M.wear_mask.vchange))//istype(M.wear_mask, /obj/item/clothing/mask/gas/voice))
 				heard_masked += R
 			else
 				heard_normal += R
