@@ -1323,7 +1323,7 @@
 
 			if ("highfive")
 				m_type = 1
-				if (!src.restrained() && !src.stat == 1 && !src.sleeping && !src.paralysis && !src.stat == 2) //because isunconcious and isdead arent in 2016, *scream, I have to hardcode these. Fix this on merge.
+				if (!src.restrained() && src.stat != 1 && !src.sleeping && !src.paralysis && src.stat != 2) //because isunconcious and isdead arent in 2016, *scream, I have to hardcode these. Fix this on merge.
 					if (src.emote_check(voluntary))
 						var/mob/M = null
 						if (param)
@@ -1332,7 +1332,7 @@
 									M = A
 									break
 						if (M)
-							if (!M.restrained() && !M.stat == 1 && !M.sleeping && !M.paralysis && !M.stat == 2) //because isunconcious and isdead arent in 2016, *scream, I have to hardcode these. Fix this on merge.
+							if (!M.restrained() && M.stat != 1 && !M.sleeping && !M.paralysis && M.stat != 2) //because isunconcious and isdead arent in 2016, *scream, I have to hardcode these. Fix this on merge.
 								if (alert(M, "[src] offers you a high five! Do you accept it?", "Choice", "Yes", "No") == "Yes")
 									if (M in view(1,null))
 										message = "<B>[src]</B> and [M] highfive!"
