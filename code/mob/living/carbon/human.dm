@@ -770,7 +770,7 @@
 				burp, fart, monologue, contemplate, custom")
 
 			if ("listtarget")
-				src.show_text("salute, bow, hug, wave, glare, stare, look, leer, nod, tweak, flipoff, doubleflip, shakefist, handshake, daps, slap, boggle")
+				src.show_text("salute, bow, hug, wave, glare, stare, look, leer, nod, tweak, flipoff, doubleflip, shakefist, handshake, daps, slap, boggle, highfive")
 
 			if ("suicide")
 				src.show_text("Suicide is a command, not an emote.  Please type 'suicide' in the input bar at the bottom of the game window to kill yourself.", "red")
@@ -1320,6 +1320,30 @@
 							src.TakeDamage("head", 0, 4, 0, DAMAGE_BURN)
 						playsound(src.loc, src.sound_snap, 100, 1)
 				else message = "<B>[src]</B> lurches forward strangely and aggressively!"
+
+			if ("highfive")
+				m_type = 1
+				if (!src.restrained())
+					if (src.emote_check(voluntary))
+						var/M = null
+						if (param)
+							for (var/mob/A in view(1, null))
+								if (ckey(param) == ckey(A.name))
+									M = A
+									break
+						if (M)
+							if (alert(M, "[src] offers you a high five! Do you accept it?", "Choice", "Yes", "No") == "Yes")
+								if (M in view(1,null))
+									message = "<B>[src]</B> and [M] highfive!"
+									playsound(src.loc, src.sound_snap, 100, 1)
+							else
+								message = "<B>[src]</B> offers [M] a highfive, but [M] leaves \him hanging!"
+
+						else
+							message = "<B>[src]</B> randomly raises \his hand!"
+
+
+
 
 			// emotes that do STUFF! or are complex in some way i guess
 
