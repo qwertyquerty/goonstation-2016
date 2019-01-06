@@ -1323,22 +1323,25 @@
 
 			if ("highfive")
 				m_type = 1
-				if (!src.restrained())
+				if (!src.restrained() && !src.stat == 1 && !src.sleeping && !src.paralysis && !src.stat == 2) //because isunconcious and isdead arent in 2016, *scream, I have to hardcode these. Fix this on merge.
 					if (src.emote_check(voluntary))
-						var/M = null
+						var/mob/M = null
 						if (param)
 							for (var/mob/A in view(1, null))
 								if (ckey(param) == ckey(A.name))
 									M = A
 									break
 						if (M)
-							if (alert(M, "[src] offers you a high five! Do you accept it?", "Choice", "Yes", "No") == "Yes")
-								if (M in view(1,null))
-									message = "<B>[src]</B> and [M] highfive!"
-									playsound(src.loc, src.sound_snap, 100, 1)
+							if (!M.restrained() && !M.stat == 1 && !M.sleeping && !M.paralysis && !M.stat == 2) //because isunconcious and isdead arent in 2016, *scream, I have to hardcode these. Fix this on merge.
+								if (alert(M, "[src] offers you a high five! Do you accept it?", "Choice", "Yes", "No") == "Yes")
+									if (M in view(1,null))
+										message = "<B>[src]</B> and [M] highfive!"
+										playsound(src.loc, src.sound_snap, 100, 1)
+								else
+									message = "<B>[src]</B> offers [M] a highfive, but [M] leaves \him hanging!"
 							else
-								message = "<B>[src]</B> offers [M] a highfive, but [M] leaves \him hanging!"
-
+								message = "<B>[src]</B> highfives [M]!"
+								playsound(src.loc, src.sound_snap, 100, 1)
 						else
 							message = "<B>[src]</B> randomly raises \his hand!"
 
