@@ -1,4 +1,3 @@
-qwertyquerty - Host
 slurm - Host
 gibbed - Host
 stuntwaffle - Host
