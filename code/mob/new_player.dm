@@ -280,6 +280,7 @@ mob/new_player
 			if (epic_gamer_mode)
 				if (character.client)
 					character << sound('sound/epicgamer/prepare.ogg')
+					boutput(character, "<B><span style=\"color:red\">Prepare to fight!!</span></B>")
 
 			spawn (0)
 				qdel(src)

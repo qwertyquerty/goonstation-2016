@@ -1885,7 +1885,7 @@
 	src.holder.playeropt(chosen_player)
 
 var/global/epic_gamer_mode = 0
-/client/proc/admin_toggle_epic_gamer_mode()
+/client/proc/admin_toggle_epic_gamer_mode() // EPIC GAMER MODE!!1! brought to you by qwertyquerty
 	set category = "Toggles (Server)"
 	set name = "Toggle Epic Gamer Mode!!1!"
 	set desc = "Make everyone an epic gamer!"
@@ -1893,14 +1893,18 @@ var/global/epic_gamer_mode = 0
 
 	epic_gamer_mode = !epic_gamer_mode
 	message_admins("[key_name(src)] toggled Epic Gamer Mode [epic_gamer_mode ? "on" : "off"]")
-	logTheThing("admin", src, null, "toggled Night Mode [epic_gamer_mode ? "on" : "off"]")
-	logTheThing("diary", src, null, "toggled Night Mode [epic_gamer_mode ? "on" : "off"]", "admin")
+	logTheThing("admin", src, null, "toggled Epic Gamer Mode [epic_gamer_mode ? "on" : "off"]")
+	logTheThing("diary", src, null, "toggled Epic Gamer Mode [epic_gamer_mode ? "on" : "off"]", "admin")
 
-	boutput(world, "<B><span style=\"color:red\">You now feel like an EPIC GAMER!!1!</span></B>")
+	if (epic_gamer_mode)
+		boutput(world, "<B><span style=\"color:red\">You now feel like an EPIC GAMER!!1!</span></B>")
 
-	for (var/mob/M in mobs)
-		if (M.client)
-			M << sound('sound/epicgamer/survival.ogg')
+		for (var/mob/M in mobs)
+			if (M.client)
+				M << sound('sound/epicgamer/survival.ogg')
+	else
+		boutput(world, "<B><span style=\"color:red\">You no longer feel like an epic gamer...</span></B>")
+
 
 var/global/night_mode_enabled = 0
 /client/proc/admin_toggle_nightmode()

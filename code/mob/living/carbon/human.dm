@@ -517,19 +517,24 @@
 
 	if (!src.suiciding)
 		if (epic_gamer_mode)
-			if (game_stats.getValue("deaths") == 0)
+			if (game_stats.GetStat("deaths") == 1)
 				for (var/mob/M in mobs)
 					if (M.client)
 						M << sound('sound/epicgamer/firstblood.ogg')
+				boutput(world, "<B><span style=\"color:red\">First blood has been drawn!!</span></B>")
+
 			else
-				if (!gibbed)
+				if (gibbed)
 					for (var/mob/M in mobs)
 						if (M.client)
 							M << sound('sound/epicgamer/monsterkill.ogg')
+					boutput(world, "<B><span style=\"color:red\">MONSTER KILL!!</span></B>")
+
 				else
 					for (var/mob/M in mobs)
 						if (M.client)
 							M << sound('sound/epicgamer/ultrakill.ogg')
+					boutput(world, "<B><span style=\"color:red\">Ultra Kill!!</span></B>")
 
 		if (emergency_shuttle.location == 1)
 			src.unlock_medal("HUMANOID MUST NOT ESCAPE", 1)

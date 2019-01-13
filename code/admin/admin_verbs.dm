@@ -170,6 +170,7 @@ var/list/admin_verbs = list(
 /client/proc/togglebuildmode,\
 /client/proc/cmd_admin_rejuvenate_all,\
 /client/proc/fix_powernets,\
+/client/proc/admin_toggle_epic_gamer_mode,\
 /client/proc/toggle_force_mixed_blob,\
 /client/proc/toggle_force_mixed_wraith,\
 /proc/possess,\

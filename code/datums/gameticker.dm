@@ -215,6 +215,7 @@ var/global/datum/controller/gameticker/ticker
 					if (player)
 						if (player.client)
 							player << sound('sound/epicgamer/prepare.ogg')
+							boutput(player, "<B><span style=\"color:red\">Prepare to fight!!</span></B>")
 
 	proc/add_minds(var/periodic_check = 0)
 		for (var/mob/player in mobs)
@@ -376,6 +377,9 @@ var/global/datum/controller/gameticker/ticker
 				allComplete = 0
 
 		if (allComplete && count)
+			if (epic_gamer_mode)
+				crewMind << sound('sound/epicgamer/impressive.ogg')
+
 			successfulCrew += "[crewMind.current.real_name] ([crewMind.key])"
 #endif
 	var/cashscore = 0

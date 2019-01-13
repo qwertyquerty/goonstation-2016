@@ -33,6 +33,11 @@ proc/handle_queued_explosion_dont_call_this_one_directly_fucknuts(atom/source, t
 			if(C.mob && (C.mob.z == epicenter.z))
 				if(power > 15 && C.mob.z == 1 && epicenter.z == 1)
 					shake_camera(C.mob, 8, 3) // remove if this is too laggy
+					
+				if(power >= 30 && C.mob.z == 1 && epicenter.z == 1)
+					if (epic_gamer_mode)
+						boutput(C.mob, "<B><span style=\"color:red\">WICKED SICK!!</span></B>")
+						C << sound('sound/epicgamer/wickedsick.ogg')
 
 				C << sound(distant_sound)
 
@@ -49,7 +54,7 @@ proc/handle_queued_explosion_dont_call_this_one_directly_fucknuts(atom/source, t
 		last_touched = source.fingerprintslast
 	else
 		last_touched = "*null*"
-		
+
 	var/list/nodes = list()
 	var/list/open = list(epicenter)
 	nodes[epicenter] = radius
@@ -118,7 +123,7 @@ proc/handle_queued_explosion_dont_call_this_one_directly_fucknuts(atom/source, t
 			T.ex_act(2, last_touched)
 		else
 			T.ex_act(3, last_touched)
-		
+
 	LAGCHECK(75)
 	defer_powernet_rebuild = 0
 	defer_camnet_rebuild = 0
