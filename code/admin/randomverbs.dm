@@ -774,16 +774,16 @@
 	if(!selection)
 		return
 
-	var/rotation = input("Select rotation:", "FUCK YE", "0°") in list("0°", "90°", "180°", "270°")
+	var/rotation = input("Select rotation:", "FUCK YE", "0ï¿½") in list("0ï¿½", "90ï¿½", "180ï¿½", "270ï¿½")
 
 	switch(rotation)
-		if("0°")
+		if("0ï¿½")
 			selection.dir = NORTH
-		if("90°")
+		if("90ï¿½")
 			selection.dir = EAST
-		if("180°")
+		if("180ï¿½")
 			selection.dir = SOUTH
-		if("270°")
+		if("270ï¿½")
 			selection.dir = WEST
 
 	logTheThing("admin", selection, "set %target%'s viewport orientation to [rotation].")
@@ -1884,6 +1884,24 @@
 	var/chosen_player = pick(player_pool)
 	src.holder.playeropt(chosen_player)
 
+var/global/epic_gamer_mode = 0
+/client/proc/admin_toggle_epic_gamer_mode()
+	set category = "Toggles (Server)"
+	set name = "Toggle Epic Gamer Mode!!1!"
+	set desc = "Make everyone an epic gamer!"
+	admin_only
+
+	epic_gamer_mode = !epic_gamer_mode
+	message_admins("[key_name(src)] toggled Epic Gamer Mode [epic_gamer_mode ? "on" : "off"]")
+	logTheThing("admin", src, null, "toggled Night Mode [epic_gamer_mode ? "on" : "off"]")
+	logTheThing("diary", src, null, "toggled Night Mode [epic_gamer_mode ? "on" : "off"]", "admin")
+
+	boutput(world, "<B><span style=\"color:red\">You now feel like an EPIC GAMER!!1!</span></B>")
+
+	for (var/mob/M in mobs)
+		if (M.client)
+			M << sound('sound/epicgamer/survival.ogg')
+
 var/global/night_mode_enabled = 0
 /client/proc/admin_toggle_nightmode()
 	set category = "Toggles (Server)"
@@ -1901,6 +1919,7 @@ var/global/night_mode_enabled = 0
 			APC.do_not_operate = night_mode_enabled
 			APC.update()
 			APC.updateicon()
+
 
 /client/proc/admin_set_ai_vox()
 	set category = "Special Verbs"

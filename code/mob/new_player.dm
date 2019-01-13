@@ -277,6 +277,10 @@ mob/new_player
 					ticker.minds += character.mind
 				logTheThing("debug", character, null, "<b>Late join:</b> assigned job: [JOB.name]")
 
+			if (epic_gamer_mode)
+				if (character.client)
+					character << sound('sound/epicgamer/prepare.ogg')
+
 			spawn (0)
 				qdel(src)
 

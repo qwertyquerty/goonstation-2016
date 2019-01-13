@@ -336,12 +336,12 @@ var/f_color_selector_handler/F_Color_Selector
 
 		SetupOccupationsList()
 		ircbot.event("serverstart")
-		
+
 		round_start_data() //Tell the hub site a round is starting
 		if (time2text(world.realtime,"DDD") == "Fri")
 			NT |= mentors
 
-	
+
 
 	spawn(world.tick_lag*30)
 		Optimize()

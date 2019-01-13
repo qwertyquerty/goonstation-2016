@@ -211,6 +211,11 @@ var/global/datum/controller/gameticker/ticker
 					player.create_character()
 					qdel(player)
 
+				if (epic_gamer_mode)
+					if (player)
+						if (player.client)
+							player << sound('sound/epicgamer/prepare.ogg')
+
 	proc/add_minds(var/periodic_check = 0)
 		for (var/mob/player in mobs)
 			// Who cares about NPCs? Adding them here breaks all antagonist objectives
@@ -308,6 +313,11 @@ var/global/datum/controller/gameticker/ticker
 	statlog_traitors()
 	statlog_ailaws(0)
 	round_end_data(1) //Export round end packet (normal completion)
+
+	if (epic_gamer_mode)
+		for (var/mob/M in mobs)
+			if (M.client)
+				M << sound('sound/epicgamer/wingame.ogg')
 
 	// Score Calculation and Display
 

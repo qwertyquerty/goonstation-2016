@@ -516,6 +516,21 @@
 	//src.icon_state = "dead"
 
 	if (!src.suiciding)
+		if (epic_gamer_mode)
+			if (game_stats.getValue("deaths") == 0)
+				for (var/mob/M in mobs)
+					if (M.client)
+						M << sound('sound/epicgamer/firstblood.ogg')
+			else
+				if (!gibbed)
+					for (var/mob/M in mobs)
+						if (M.client)
+							M << sound('sound/epicgamer/monsterkill.ogg')
+				else
+					for (var/mob/M in mobs)
+						if (M.client)
+							M << sound('sound/epicgamer/ultrakill.ogg')
+
 		if (emergency_shuttle.location == 1)
 			src.unlock_medal("HUMANOID MUST NOT ESCAPE", 1)
 
