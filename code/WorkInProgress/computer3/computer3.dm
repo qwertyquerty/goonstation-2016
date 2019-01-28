@@ -499,6 +499,7 @@ function lineEnter ()
 				P.disk_ejected(src.diskette)
 
 			src.diskette.set_loc(get_turf(src))
+			usr.put_in_hand_or_drop(src.diskette) // try to eject it into the users hand, if we can
 			src.diskette = null
 			usr << output(url_encode("Disk: <a href='byond://?src=\ref[src];disk=1'>-----</a>"),"comp3.browser:setInternalDisk")
 		else

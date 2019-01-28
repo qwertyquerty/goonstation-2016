@@ -226,6 +226,7 @@
 	else if (href_list["eject"] && (!isnull(src.reagent_glass)))
 		if (!src.locked)
 			src.reagent_glass.set_loc(get_turf(src))
+			usr.put_in_hand_or_drop(src.reagent_glass) // try to eject it into the users hand, if we can
 			src.reagent_glass = null
 		else
 			boutput(usr, "You cannot eject the beaker because the panel is locked!")

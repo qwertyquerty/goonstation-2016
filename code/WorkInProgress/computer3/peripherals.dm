@@ -993,7 +993,7 @@
 	proc/eject_card()
 		if(src.authid)
 			src.authid.set_loc(get_turf(src))
-
+			usr.put_in_hand_or_drop(src.authid) // try to eject it into the users hand, if we can
 			src.authid = null
 		return
 
@@ -1226,6 +1226,7 @@
 			else
 				src.disk.set_loc(get_turf(src))
 
+			usr.put_in_hand_or_drop(src.disk) // try to eject it into the users hand, if we can
 			src.disk = null
 		return
 

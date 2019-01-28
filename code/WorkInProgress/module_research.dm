@@ -716,6 +716,7 @@ var/global/datum/module_research_controller/module_control = new
 				var/obj/item/I = locate(href_list["eject"])
 				if (I && I.loc == src)
 					I.loc = src.loc
+					usr.put_in_hand_or_drop(I) // try to eject it into the users hand, if we can
 					objects -= I
 					modules -= I
 			if (href_list["shred"])

@@ -281,6 +281,7 @@
 			if("eject")
 				if (!isnull(src.diskette))
 					src.diskette.set_loc(src.loc)
+					usr.put_in_hand_or_drop(src.diskette) // try to eject it into the users hand, if we can
 					src.diskette = null
 
 	else if (href_list["save_disk"]) //Save to disk!

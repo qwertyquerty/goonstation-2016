@@ -741,6 +741,7 @@
 				vial.reagents.reagent_list[P.id] = P
 				vial.reagents.total_volume = 2
 				vial.loc = src.manip.loc
+				usr.put_in_hand_or_drop(vial) // try to eject it into the users hand, if we can
 				vial.icon_state = "vial1"
 				src.manip.slots[src.manip.exposed] = null
 				src.manip.icon_state = "manipulator"
@@ -1396,6 +1397,7 @@
 					var/obj/item/reagent_containers/glass/vial/V = vials[index]
 					vials[index] = null
 					V.loc = src.loc
+					usr.put_in_hand_or_drop(V) // try to eject it into the users hand, if we can
 					V.master = null
 					if (sel_vial == index)
 						sel_vial = 0

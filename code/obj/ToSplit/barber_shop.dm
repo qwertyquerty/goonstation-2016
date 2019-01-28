@@ -1,5 +1,5 @@
 /obj/item/clothing/head/wig
-	name = "toupée"
+	name = "toupï¿½e"
 	desc = "You can't tell the difference, Honest!"
 	icon_state= "wig"
 
@@ -434,6 +434,7 @@
 			if (href_list["eject"])
 				if(src.bottle)
 					src.bottle.set_loc(src.loc)
+					usr.put_in_hand_or_drop(src.bottle) // try to eject it into the users hand, if we can
 					src.bottle = null
 
 			if(href_list["fillb"])

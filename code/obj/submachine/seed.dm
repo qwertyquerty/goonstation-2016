@@ -195,6 +195,7 @@
 			if (istype(I,/obj/item/seed)) src.seeds.Remove(I)
 			else src.extractables.Remove(I)
 			I.set_loc(src.loc)
+			usr.put_in_hand_or_drop(I) // try to eject it into the users hand, if we can
 			src.updateUsrDialog()
 
 		else if(href_list["label"])

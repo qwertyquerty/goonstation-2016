@@ -259,6 +259,7 @@
 					src.icon_state = "[initial(src.icon_state)]-empty"
 
 					src.tape.set_loc(get_turf(src))
+					usr.put_in_hand_or_drop(src.tape) // try to eject it into the users hand, if we can
 
 					src.tape.log_line = 1
 					src.tape = null

@@ -94,6 +94,7 @@
 			return
 		if (src.P)
 			src.P.set_loc(get_turf(src))
+			usr.put_in_hand_or_drop(src.P) // try to eject it into the users hand, if we can
 			src.P = null
 			src.active = 0
 			src.update_icon()

@@ -53,6 +53,7 @@
 		if(href_list["card"])
 			if(src.ID)
 				src.ID.set_loc(src.loc)
+				usr.put_in_hand_or_drop(src.ID) // try to eject it into the users hand, if we can
 				src.ID = null
 				src.unlocked = 0
 			else

@@ -107,12 +107,14 @@
 					if("beaker")
 						if(src.beaker)
 							src.beaker.set_loc(src.loc)
+							usr.put_in_hand_or_drop(src.beaker) // try to eject it into the users hand, if we can
 							src.beaker = null
 							src.update_icon()
 
 					if("cone")
 						if(src.cone)
 							src.cone.set_loc(src.loc)
+							usr.put_in_hand_or_drop(src.cone) // try to eject it into the users hand, if we can
 							src.cone = null
 							src.update_icon()
 

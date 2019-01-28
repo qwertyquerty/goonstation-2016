@@ -2967,6 +2967,7 @@
 				telecrystals[targetCrystal] = null
 				crystalCount = max(crystalCount - 1, 0)
 				toEject.set_loc(get_turf(src))
+				usr.put_in_hand_or_drop(toEject) // try to eject it into the users hand, if we can
 				boutput(usr, "<span style=\"color:blue\">You remove [toEject] from the slot.</span>")
 
 			src.updateUsrDialog()

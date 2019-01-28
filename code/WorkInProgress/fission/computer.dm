@@ -140,6 +140,7 @@
 			else
 				boutput(world, "Unable to remove [R] from lists")
 			R.set_loc(selectedReactor.loc)
+			usr.put_in_hand_or_drop(R) // try to eject it into the users hand, if we can
 
 		else if(href_list["operation"])
 			switch(href_list["operation"])

@@ -490,6 +490,7 @@
 				if (istype(O,/obj/item/robot_module/)) src.modules.Remove(O)
 				if (istype(O,/obj/item/clothing/)) src.clothes.Remove(O)
 				O.set_loc(src.loc)
+				usr.put_in_hand_or_drop(O) // try to eject it into the users hand, if we can
 
 			// composite borg stuff
 

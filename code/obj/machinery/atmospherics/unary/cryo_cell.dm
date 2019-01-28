@@ -121,6 +121,7 @@
 				build_icon()
 			if(href_list["eject"])
 				beaker:set_loc(src.loc)
+				usr.put_in_hand_or_drop(beaker) // try to eject it into the users hand, if we can
 				beaker = null
 
 			src.updateUsrDialog()

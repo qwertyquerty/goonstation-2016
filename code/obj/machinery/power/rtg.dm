@@ -54,6 +54,7 @@
 			usr.machine = null
 		else if (href_list["eject"] && in_range(src, usr))
 			fuel_pellet.loc = src.loc
+			usr.put_in_hand_or_drop(src.fuel_pellet) // try to eject it into the users hand, if we can
 			fuel_pellet = null
 			updateicon()
 
