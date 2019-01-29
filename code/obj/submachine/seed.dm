@@ -185,6 +185,7 @@
 			if (!src.inserted) boutput(usr, "<span style=\"color:red\">No receptacle found to eject.</span>")
 			else
 				src.inserted.set_loc(src.loc)
+				usr.put_in_hand_or_drop(src.inserted) // try to eject it into the users hand, if we can
 				src.inserted = null
 			src.updateUsrDialog()
 
