@@ -384,7 +384,7 @@
 				src.host_program = null
 
 		else if (href_list["eject_cart"])
-			src.eject_cartridge()
+			src.eject_cartridge(usr ? usr : null)
 
 		else if (href_list["eject_id_card"])
 			src.eject_id_card(usr ? usr : null)
@@ -577,7 +577,7 @@
 			//else
 				//qdel(signal)
 
-	proc/eject_cartridge()
+	proc/eject_cartridge(var/mob/user as mob)
 		if(src.cartridge)
 			var/turf/T = get_turf(src)
 
@@ -591,6 +591,9 @@
 				src.scan_program = null
 
 			src.cartridge.set_loc(T)
+			if (istype(user))
+				user.put_in_hand_or_drop(src.cartridge) // try to eject it into the users hand, if we can
+
 			src.cartridge = null
 
 		return

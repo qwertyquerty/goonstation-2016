@@ -89,32 +89,30 @@
 			return 0
 		return 1
 
-	proc/eject_tank()
+	proc/eject_tank(var/mob/user as mob)
 		if (!src)
 			return
 		if (src.P)
 			src.P.set_loc(get_turf(src))
+
+			if (istype(user))
+				user.put_in_hand_or_drop(src.P) // try to eject it into the users hand, if we can
+
 			src.P = null
 			src.active = 0
 			src.update_icon()
+
 		return
 
-	proc/eject_tank_to_hand()
-		if (!src)
-			return
-		if (src.P)
-			src.P.set_loc(get_turf(src))
-			usr.put_in_hand_or_drop(src.P) // try to eject it into the users hand, if we can
-			src.P = null
-			src.active = 0
-			src.update_icon()
-		return
-
-	proc/eject_cell()
+	proc/eject_cell(var/mob/user as mob)
 		if (!src)
 			return
 		if (src.CL)
 			src.CL.set_loc(get_turf(src))
+
+			if (istype(user))
+				user.put_in_hand_or_drop(src.CL) // try to eject it into the users hand, if we can
+
 			src.CL = null
 			if (src.mode == 2) // Generator doesn't need to shut down when in APC mode.
 				src.active = 0
@@ -146,7 +144,7 @@
 			if (src.check_tank(src.P) == 0)
 				src.visible_message("<span style=\"color:red\">[src] runs out of fuel and shuts down! [src.P] is ejected!</span>")
 				playsound(src.loc, "sound/machines/buzz-two.ogg", 100, 0)
-				src.eject_tank()
+				src.eject_tank(null)
 				src.updateDialog()
 				return
 
@@ -201,7 +199,7 @@
 					if (src.CL.charge == src.CL.maxcharge)
 						src.visible_message("<span style=\"color:red\">[src.CL] is fully charged. [src] ejects the cell and shuts down!</span>")
 						playsound(src.loc, "sound/machines/ding.ogg", 100, 1)
-						src.eject_cell()
+						src.eject_cell(null)
 						src.updateDialog()
 						return
 					if (src.CL.charge < src.CL.maxcharge)
@@ -260,7 +258,7 @@
 				return
 			if (src.P)
 				src.visible_message("<span style=\"color:red\">[usr] ejects [src.P] from the [src]!</span>")
-				src.eject_tank_to_hand()
+				src.eject_tank(usr ? usr : null)
 			else
 				usr.show_text("There's no tank to eject.", "red")
 
@@ -270,7 +268,7 @@
 				return
 			if (src.CL)
 				src.visible_message("<span style=\"color:red\">[usr] ejects [src.CL] from the [src]!</span>")
-				src.eject_cell()
+				src.eject_cell(usr ? usr : null)
 			else
 				usr.show_text("There's no cell to eject.", "red")
 
