@@ -141,6 +141,7 @@ Target Pressure: <A href='?src=\ref[src];pressure_adj=-100'>-</A> <A href='?src=
 		if (href_list["remove_tank"])
 			if(holding)
 				holding.set_loc(loc)
+				usr.put_in_hand_or_drop(holding) // try to eject it into the users hand, if we can
 				holding = null
 			if (src.on && src.direction_out)
 				message_admins("[key_name(usr)] removed a tank from [src], pumping its contents into the air at [log_loc(src)]. See station logs for atmos readout.")

@@ -94,6 +94,16 @@
 			return
 		if (src.P)
 			src.P.set_loc(get_turf(src))
+			src.P = null
+			src.active = 0
+			src.update_icon()
+		return
+
+	proc/eject_tank_to_hand()
+		if (!src)
+			return
+		if (src.P)
+			src.P.set_loc(get_turf(src))
 			usr.put_in_hand_or_drop(src.P) // try to eject it into the users hand, if we can
 			src.P = null
 			src.active = 0
@@ -250,7 +260,7 @@
 				return
 			if (src.P)
 				src.visible_message("<span style=\"color:red\">[usr] ejects [src.P] from the [src]!</span>")
-				src.eject_tank()
+				src.eject_tank_to_hand()
 			else
 				usr.show_text("There's no tank to eject.", "red")
 

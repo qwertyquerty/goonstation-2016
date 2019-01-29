@@ -136,6 +136,7 @@ Target Pressure: <A href='?src=\ref[src];volume_adj=-100'>-</A> <A href='?src=\r
 		if (href_list["remove_tank"])
 			if(holding)
 				holding.set_loc(loc)
+				usr.put_in_hand_or_drop(holding) // try to eject it into the users hand, if we can
 				holding = null
 
 		if (href_list["volume_adj"])

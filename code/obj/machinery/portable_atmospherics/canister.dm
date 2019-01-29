@@ -547,6 +547,7 @@
 		if (href_list["remove_tank"])
 			if(holding)
 				holding.set_loc(loc)
+				usr.put_in_hand_or_drop(holding) // try to eject it into the users hand, if we can
 				holding = null
 				if(valve_open && !connected_port)
 					message_admins("[key_name(usr)] removed a tank from [src], opening it into the air at [log_loc(src)]. See station logs for atmos readout.")
@@ -856,4 +857,3 @@
 
 	src.update_icon()
 	return 1
-

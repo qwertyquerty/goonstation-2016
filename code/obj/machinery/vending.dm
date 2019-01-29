@@ -1150,7 +1150,8 @@
 				if (!pay || (src.credit >= R.product_cost) || (account && account.fields["current_money"] >= R.product_cost)) //Conor12: Prevents credit hitting negative numbers if multiple items are bought at once.
 					R.product_amount--
 					if (ispath(product_path))
-						new product_path(get_turf(src))
+						var/obj/vended = new product_path(get_turf(src))
+						usr.put_in_hand_or_drop(vended) // try to eject it into the users hand, if we can
 					else if (isicon(R.product_path))
 						var/icon/welp = icon(R.product_path)
 						if (welp.Width() > 32 || welp.Height() > 32)
@@ -1197,6 +1198,7 @@
 			spawn(src.vend_delay)
 				if (src.credit > 0)
 					var/obj/item/spacecash/returned = new /obj/item/spacecash(get_turf(src), src.credit)
+					usr.put_in_hand_or_drop(returned) // try to eject it into the users hand, if we can
 					src.credit = 0
 					boutput(usr, "<span style=\"color:blue\">You receive [returned].</span>")
 					src.generate_HTML(1)
